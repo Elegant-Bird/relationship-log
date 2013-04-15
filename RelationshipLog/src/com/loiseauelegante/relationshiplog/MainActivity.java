@@ -15,6 +15,15 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		((Button) findViewById(R.id.add_button)).setOnClickListener(new View.OnClickListener()
+	    {
+			public void onClick(View paramAnonymousView)
+			{
+			    Intent localIntent = new Intent(MainActivity.this, AddEntryActivity.class);
+			    MainActivity.this.startActivity(localIntent);
+			} 
+	    });
+		
 	    ((Button) findViewById(R.id.log_button)).setOnClickListener(new View.OnClickListener()
 	    {
 			public void onClick(View paramAnonymousView)

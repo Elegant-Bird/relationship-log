@@ -3,7 +3,10 @@ package com.loiseauelegante.relationshiplog;
 import java.util.Locale;
 
 import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
+import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 public class CalendarLogActivity extends FragmentActivity implements
@@ -36,6 +41,30 @@ public class CalendarLogActivity extends FragmentActivity implements
 	 * The {@link ViewPager} that will host the section contents.
 	 */
 	ViewPager mViewPager;
+	
+	public class ListContentFragment extends Fragment {
+	    private String mText;
+
+	    @Override
+	    public void onAttach(Activity activity) {
+	      // This is the first callback received; here we can set the text for
+	      // the fragment as defined by the tag specified during the fragment transaction
+	      super.onAttach(activity);
+	      mText = getTag();
+	    }
+
+	    @Override
+	    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+	            Bundle savedInstanceState) {
+	        // This is called to define the layout for the fragment;
+	        // we just create a TextView and set its text to be the fragment tag
+	        TextView text = new TextView(getActivity());
+	        text.setTextColor(Color.GREEN);
+	        text.setBackgroundColor(Color.WHITE);
+	        text.setText(mText);
+	        return text;
+	    }
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +76,34 @@ public class CalendarLogActivity extends FragmentActivity implements
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		// Show the Up button in the action bar.
 		actionBar.setDisplayHomeAsUpEnabled(true);
+		
+		/****		Set up the Calendar Views for this Activity	***/
+		SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.calendar_list,
+		          android.R.layout.simple_spinner_dropdown_item);
+		OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
+			  // Get the same strings provided for the drop-down's ArrayAdapter
+			  String[] strings = getResources().getStringArray(R.array.calendar_list);
 
+			  @Override
+			  public boolean onNavigationItemSelected(int position, long itemId) {
+			    // Create new fragment from our own Fragment class
+			    ListContentFragment newFragment = new ListContentFragment();
+			    //FragmentTransaction ft = openFragmentTransaction();
+			    
+			    // Replace whatever is in the fragment container with this fragment
+			    //  and give the fragment a tag name equal to the string at the position selected
+			    //ft.replace(R.id.fragment_container, newFragment, strings[position]);
+			    
+			    // Apply changes
+			    //ft.commit();
+			    return true;
+			  }
+		};
+		
+		//add the navigation to the action bar
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+		actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
+		
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		mSectionsPagerAdapter = new SectionsPagerAdapter(
