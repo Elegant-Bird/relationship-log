@@ -4,5 +4,16 @@
     <string name="app_name">Relationship Log</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_section1">Good Times</string>
+    <string name="title_section2">Bad Times</string>
+    <string name="pro_section">Pros</string>
+    <string name="con_section">Cons</string>
+    <string name="view_log">Relationship Log</string>
+    <string name="add_log">Add a New Entry</string>
+    <string name="pros_cons">Pros and Cons List</string>
+    <string name="title_activity_add_entry">Add Log Entry</string>
+    <string name="title_activity_pro_con">Relationship Pros and Cons</string>
+    <string name="title_activity_calendar_log">Log Calendar</string>
+    
 
 </resources>

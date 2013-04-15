@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="9"
+        android:minSdkVersion="11"
         android:targetSdkVersion="17" />
 
     <application
@@ -21,6 +21,30 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.loiseauelegante.relationshiplog.CalendarLogActivity"
+            android:label="@string/title_activity_calendar_log"
+            android:parentActivityName="com.loiseauelegante.relationshiplog.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.loiseauelegante.relationshiplog.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.loiseauelegante.relationshiplog.AddEntryActivity"
+            android:label="@string/title_activity_add_entry"
+            android:parentActivityName="com.loiseauelegante.relationshiplog.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.loiseauelegante.relationshiplog.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.loiseauelegante.relationshiplog.ProConActivity"
+            android:label="@string/title_activity_pro_con"
+            android:parentActivityName="com.loiseauelegante.relationshiplog.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.loiseauelegante.relationshiplog.MainActivity" />
         </activity>
     </application>
 
