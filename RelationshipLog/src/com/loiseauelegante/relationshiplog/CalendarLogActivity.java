@@ -78,7 +78,7 @@ public class CalendarLogActivity extends FragmentActivity implements
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		
 		/****		Set up the Calendar Views for this Activity	***/
-		SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.calendar_list,
+		/*SpinnerAdapter mSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.calendar_list,
 		          android.R.layout.simple_spinner_dropdown_item);
 		OnNavigationListener mOnNavigationListener = new OnNavigationListener() {
 			  // Get the same strings provided for the drop-down's ArrayAdapter
@@ -102,7 +102,7 @@ public class CalendarLogActivity extends FragmentActivity implements
 		
 		//add the navigation to the action bar
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-		actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);
+		actionBar.setListNavigationCallbacks(mSpinnerAdapter, mOnNavigationListener);*/
 		
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
